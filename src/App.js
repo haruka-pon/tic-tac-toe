@@ -57,7 +57,7 @@ export function TicTacToe() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <div className="status">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
@@ -74,7 +74,7 @@ export function TicTacToe() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 
@@ -110,17 +110,28 @@ export function CubeMaker() {
       { height: 5, width: 2, depth: 5 },
       { height: 5, width: 5, depth: 5 },
     ];
-
   const addCube = [{ height: 1, width: 1, depth: 1 }];
-
   cubeArray.push(addCube);
 
-  cubeArray.map((num) => {
-    return (
-      <>
-        <p>{num}</p>
-      </>
-    );
-  });
+  return (
+    <div>
+      {
+        cubeArray.map((num) => {
+          return (
+            <React.Fragment >
+              <p>Cubeメーカー</p>
+              <ul>
+                <li>Y: {num.height}</li>
+                <li>X: {num.width}</li>
+                <li>Z: {num.depth}</li>
+              </ul>
+            </React.Fragment >
+          )
+        })
+      }
+    </div>
+  );
+
+
 }
 
